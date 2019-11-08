@@ -9,22 +9,26 @@
       <fieldset id="formHeader">
        <legend >Selecting Algorithm</legend>
        <p>
-          <label>Sorting Algrotihms</label>            
+          <label id="mainLabel">Select a Sorting Algrotihm :</label> 
+           <br>           
           <input type = "radio"
                  name = "radSize"
                  id = "bubble"
                  value = "Bubble Sort"
+                 class="Sorting" 
                   />
           <label for = "bubble">Bubble Sort</label>
           <input type = "radio"
                  name = "radSize"
                  id = "mergeSort"
-                 value = "Merge Sort" />
+                 value = "Merge Sort" 
+                 class="Sorting" />
           <label for = "mergeSort">Merge Sort</label>
           <input type = "radio"
                  name = "radSize"
                  id = "SelectionSort"
-                 value = "Selection Sort" />
+                 value = "Selection Sort"
+                 class= "Sorting"  />
           <label for = "SelectionSort">Selection Sort</label>
         </p>     
         <div class="slideContainerNum">
@@ -41,7 +45,7 @@
     </form>
 
 <body> 
-    <section class="header"></section>
+    <section class="header">Sorting Visualizer</section>
     <section class="data-container"></section>
 	<button id="randArrGenBtn" > Generate A Random Blocks</button>
 	<button id="sort" class="button"> SORT</button>
