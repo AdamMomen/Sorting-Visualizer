@@ -68,6 +68,7 @@ return array;
 }
 //====================================== MAIN PROJECT CORE ALGROTHIMS ===============================================================
 var numberOfBlocks = parseInt($("#Range").val());
+var delayTime = parseInt($("#myTime").val());
 const container = document.querySelector(".data-container");
 var sortingOperation = false;
 
@@ -82,7 +83,7 @@ $('#randArrGenBtn').click(function () {
 if (sortingOperation) {
   return alert ('SORTING operation is RUNNING PLEASE Wait')
   }
- generateBlocksBubble();
+ generateBlocks();
 });
 
 $('#sort').click(function () {
@@ -97,16 +98,22 @@ $('#sort').click(function () {
 });
 $('#Range').click(function () {
    if (sortingOperation) {
-    return alert('Please wait until the sortin is done');
+    return alert('Please wait until the sorting is done');
   }
     numberOfBlocks = parseInt($("#Range").val());
-    generateBlocksBubble();
-    $('#valOfSlider').text(numberOfBlocks);
+    generateBlocks();
+    $('#valOfSlider').text(numberOfBlocks + ' Blocks');
+})
+$('#myTime').click(function () {
+   if (sortingOperation) {
+    return alert('Please wait until the sorting is done');
+  }
+    delayTime = parseInt($("#myTime").val());
+    $('#timeOfSlider').text(delayTime + ' ms ');
 })
 
-
  //============================>RANDOM BLOCK GENERATOR<==========================//
-function generateBlocksBubble(num = numberOfBlocks) {
+function generateBlocks(num = numberOfBlocks) {
 $(container).html('');
   if (typeof num !== "number") {
     alert("First argument must be a typeof Number");
@@ -114,10 +121,13 @@ $(container).html('');
   }
   for (let i = 0; i < num; i += 1) {
     const value = Math.floor(Math.random() * 100);
-
+    //create  cnost of div 
     const block = document.createElement("div");
+    //add class named block 
     block.classList.add("block");
+    //set the height of the block to a random generated value scaled by 3.
     block.style.height = `${value * 3}px`;
+    //set a block width of 30 px.
     block.style.transform = `translateX(${i * 30}px)`;
 
     const blockLabel = document.createElement("label");
@@ -131,7 +141,7 @@ $(container).html('');
 
 
 //** each page refresh will generate a new random block
-generateBlocksBubble();
+generateBlocks();
 //**
 function swap(el1, el2) {
   return new Promise(resolve => {
@@ -155,10 +165,10 @@ function swap(el1, el2) {
 }
  //===============================>Bubble Sorted Funvtion<===========================//
 //bubble function that takes the delay time value in ms;
-async function bubbleSort(delay = 100) {
+async function bubbleSort(delay = delayTime) {
   if ($("input:checked").val() === 'Bubble Sort') {
     sortingOperation = true;
-    if (delay && typeof delay !== "number" ) {
+    if (  typeof delay !== "number" ) {
     alert("sort: First argument must be a typeof Number");
     return;
   }
@@ -193,10 +203,10 @@ async function bubbleSort(delay = 100) {
   sortingOperation = false;
 }
  //==============================>MERGE SORTER FUNCTION<=============================//
-async function mergeSort(delay = 100) {
+async function mergeSort(delay = delayTime) {
   if ($("input:checked").val() === 'Merge Sort') {
     sortingOperation = true;
-  if (delay && typeof delay !== "number") {
+  if (typeof delay !== "number") {
     alert("sort: First argument must be a typeof Number");
     return;
   }
