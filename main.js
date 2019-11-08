@@ -71,6 +71,7 @@ var numberOfBlocks = parseInt($("#Range").val());
 var delayTime = parseInt($("#myTime").val());
 const container = document.querySelector(".data-container");
 var sortingOperation = false;
+var exitLoop = false;
 
 $('input').click(function () {
 
@@ -91,11 +92,13 @@ $('#sort').click(function () {
   return alert('Please select sorting algorithm');
  }
   if (sortingOperation) {
-    return alert ('SORTING operation is RUNNING PLEASE Wait')
+    return alert ('SORTING OPERATION IS RUNNING PLEASE WAIT')
     }
   mergeSort();
   bubbleSort();
+  selectionSort();
 });
+
 $('#Range').click(function () {
    if (sortingOperation) {
     return alert('Please wait until the sorting is done');
@@ -110,6 +113,14 @@ $('#myTime').click(function () {
   }
     delayTime = parseInt($("#myTime").val());
     $('#timeOfSlider').text(delayTime + ' ms ');
+});
+
+$('#stop').click(function () {
+   if (sortingOperation === false) {
+    return alert('The sorting has already stopped');
+  }
+    exitLoop = true;
+    console.log(exitLoop);
 })
 
  //============================>RANDOM BLOCK GENERATOR<==========================//
@@ -172,9 +183,13 @@ async function bubbleSort(delay = delayTime) {
     alert("sort: First argument must be a typeof Number");
     return;
   }
+
   let blocks = document.querySelectorAll(".block");
   for (let i = 0; i < blocks.length - 1; i++) {
     for (let j = 0; j < blocks.length - i - 1; j++) {
+        if (exitLoop === true) {
+            break;
+          } else {
       blocks[j].style.backgroundColor = "#FF4949";
       blocks[j + 1].style.backgroundColor = "#FF4949";
       //making delay time , asyncrounsly form the main excution time.
@@ -197,12 +212,14 @@ async function bubbleSort(delay = delayTime) {
     }
     //set the last element color to green. 
     blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
-  }
-}
+      }
+    }
   //setting the operation flage to false, ending of sorting .
+ }
   sortingOperation = false;
+  exitLoop = false;
 }
- //==============================>MERGE SORTER FUNCTION<=============================//
+//==============================>MERGE SORTER FUNCTION<=============================//
 async function mergeSort(delay = delayTime) {
   if ($("input:checked").val() === 'Merge Sort') {
     sortingOperation = true;
@@ -215,6 +232,10 @@ async function mergeSort(delay = delayTime) {
   //THIS PART FOR THE FIRST HALF OF THE BLOCK.
   for (let i = 0; i < blocksMiddleIdx ; i++) {
     for (let j = 0; j < blocksMiddleIdx - i ; j++) {
+      //this will break the function if the stop button cliked.
+      if (exitLoop === true) {
+      break;
+      } else {
     blocks[j].style.backgroundColor = "#FF4949";
     blocks[j + 1].style.backgroundColor = "#FF4949";
      await new Promise(resolve =>
@@ -263,7 +284,54 @@ async function mergeSort(delay = delayTime) {
     //set the last element color to green. 
     blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
     //setting the operation flage to false, ending of sorting .
-  }
-}
+        }
+      }
+      //reseting the operation and exit state flags.
   sortingOperation = false;
+  exitLoop = false;
+  }
 } 
+//=============================================SELECTION SORT ALGORITMH==========================================
+async function selectionSort(delay = delayTime) {
+  if ($("input:checked").val() === 'Selection Sort') {
+    sortingOperation = true;
+    if (  typeof delay !== "number" ) {
+    alert("sort: First argument must be a typeof Number");
+    return;
+  }
+
+  let blocks = document.querySelectorAll(".block");
+  for (let i = 0; i < blocks.length - 1; i++) {
+    for (let j = 0; j < blocks.length - i - 1; j++) {
+        if (exitLoop === true) {
+            break;
+          } else {
+      blocks[j].style.backgroundColor = "#FF4949";
+      blocks[j + 1].style.backgroundColor = "#FF4949";
+      //making delay time , asyncrounsly form the main excution time.
+      await new Promise(resolve =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
+      //takes the values of index and the following index from blocks div
+      const value1 = Number(blocks[j].childNodes[0].innerHTML);
+      const value2 = Number(blocks[j + 1].childNodes[0].innerHTML);
+
+      if (value1 < value2) {
+        await swap(blocks[j], blocks[j + 1]);  //calling the swap function and waiting until the transition ends
+        blocks = document.querySelectorAll(".block");
+      }
+      //set element current index and following to different color style.
+      blocks[j].style.backgroundColor = "#58B7FF";
+      blocks[j + 1].style.backgroundColor = "#58B7FF";
+    }
+    //set the last element color to green. 
+    blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
+      }
+    }
+  //setting the operation flage to false, ending of sorting .
+ }
+  sortingOperation = false;
+  exitLoop = false;
+}
