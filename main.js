@@ -67,7 +67,7 @@ function sortArray(array) {
 return array;
 }
 //====================================== MAIN PROJECT CORE ALGROTHIMS ===============================================================
-var numberOfBlocks = parseInt($("#myRange").val());
+var numberOfBlocks = parseInt($("#Range").val());
 const container = document.querySelector(".data-container");
 var sortingOperation = false;
 
@@ -95,11 +95,11 @@ $('#sort').click(function () {
   mergeSort();
   bubbleSort();
 });
-$('#myRange').click(function () {
+$('#Range').click(function () {
    if (sortingOperation) {
     return alert('Please wait until the sortin is done');
   }
-    numberOfBlocks = parseInt($("#myRange").val());
+    numberOfBlocks = parseInt($("#Range").val());
     generateBlocksBubble();
     $('#valOfSlider').text(numberOfBlocks);
 })

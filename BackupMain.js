@@ -67,7 +67,7 @@ function sortArray(array) {
 return array;
 }
 //====================================== MAIN PROJECT CORE ALGROTHIMS =============================================
-//writes the name of the 
+//writes the head title of the Algorith, each sorting algorithm selcection  
 $('input').click(function () {
    var text = $("input:checked").val();
    $('.header').text(text);
@@ -236,9 +236,3 @@ async function mergeSort(delay = 100) {
 } 
 
 
-$('#randArrGenBtn').click(function () {
-if (sortingOperation) {
-  return alert ('SORTING operation is RUNNING PLEASE Wait')
-  }
- generateBlocksBubble();
-});
