@@ -67,18 +67,12 @@ function sortArray(array) {
 return array;
 }
 //====================================== MAIN PROJECT CORE ALGROTHIMS =============================================
+//writes the name of the 
 $('input').click(function () {
    var text = $("input:checked").val();
    $('.header').text(text);
-
 })
 var sortingOperation = false;
-$('#randArrGenBtn').click(function () {
-if (sortingOperation) {
-  return alert ('SORTING operation is RUNNING PLEASE Wait')
-  }
- generateBlocksBubble();
-});
 
 $('#sort').click(function () {
   if (sortingOperation) {
@@ -90,7 +84,7 @@ $('#sort').click(function () {
 
 
 const container = document.querySelector(".data-container");
-  
+ //============================>RANDOM BLOCK GENERATOR<==========================//
 function generateBlocksBubble(num = 20) {
 $(container).html('');
   if (num && typeof num !== "number") {
@@ -113,7 +107,7 @@ $(container).html('');
     $(container).append(block)
   }
 }
-//**
+//** each page refresh will generate a new random block
 generateBlocksBubble();
 //**
 function swap(el1, el2) {
@@ -136,7 +130,7 @@ function swap(el1, el2) {
     });
   });
 }
-
+ //===============================>Bubble Sorted Funvtion<===========================//
 //bubble function that takes the delay time value in ms;
 async function bubbleSort(delay = 100) {
   if ($("input:checked").val() === 'Bubble Sort') {
@@ -175,7 +169,7 @@ async function bubbleSort(delay = 100) {
   //setting the operation flage to false, ending of sorting .
   sortingOperation = false;
 }
-
+ //==============================>MERGE SORTER FUNCTION<=============================//
 async function mergeSort(delay = 100) {
   if ($("input:checked").val() === 'Merge Sort') {
     sortingOperation = true;
@@ -240,3 +234,11 @@ async function mergeSort(delay = 100) {
 }
   sortingOperation = false;
 } 
+
+
+$('#randArrGenBtn').click(function () {
+if (sortingOperation) {
+  return alert ('SORTING operation is RUNNING PLEASE Wait')
+  }
+ generateBlocksBubble();
+});

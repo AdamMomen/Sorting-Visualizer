@@ -72,6 +72,7 @@ const container = document.querySelector(".data-container");
 var sortingOperation = false;
 
 $('input').click(function () {
+
    var text = $("input:checked").val();
    $('.header').text(text);
 
@@ -81,16 +82,27 @@ $('#randArrGenBtn').click(function () {
 if (sortingOperation) {
   return alert ('SORTING operation is RUNNING PLEASE Wait')
   }
- 
+ generateBlocksBubble();
 });
 
 $('#sort').click(function () {
+ if ($("input:checked").val() === undefined){
+  return alert('Please select sorting algorithm');
+ }
   if (sortingOperation) {
     return alert ('SORTING operation is RUNNING PLEASE Wait')
     }
   mergeSort();
   bubbleSort();
 });
+$('#myRange').click(function () {
+   if (sortingOperation) {
+    return alert('Please wait until the sortin is done');
+  }
+    numberOfBlocks = parseInt($("#myRange").val());
+    generateBlocksBubble();
+    $('#valOfSlider').text(numberOfBlocks);
+})
 
 
  //============================>RANDOM BLOCK GENERATOR<==========================//
@@ -117,10 +129,6 @@ $(container).html('');
   }
 }
 
-$('#myRange').click(function () {
-    numberOfBlocks = parseInt($("#myRange").val());
-    generateBlocksBubble();
-})
 
 //** each page refresh will generate a new random block
 generateBlocksBubble();
