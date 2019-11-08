@@ -66,22 +66,18 @@ function sortArray(array) {
   }
 return array;
 }
-//====================================== MAIN PROJECT CORE ALGROTHIMS ===============================================================
-var numberOfBlocks = parseInt($("#myRange").val());
-const container = document.querySelector(".data-container");
-var sortingOperation = false;
-
+//====================================== MAIN PROJECT CORE ALGROTHIMS =============================================
 $('input').click(function () {
    var text = $("input:checked").val();
    $('.header').text(text);
 
 })
-
+var sortingOperation = false;
 $('#randArrGenBtn').click(function () {
 if (sortingOperation) {
   return alert ('SORTING operation is RUNNING PLEASE Wait')
   }
- 
+ generateBlocksBubble();
 });
 
 $('#sort').click(function () {
@@ -93,10 +89,11 @@ $('#sort').click(function () {
 });
 
 
- //============================>RANDOM BLOCK GENERATOR<==========================//
-function generateBlocksBubble(num = numberOfBlocks) {
+const container = document.querySelector(".data-container");
+  
+function generateBlocksBubble(num = 20) {
 $(container).html('');
-  if (typeof num !== "number") {
+  if (num && typeof num !== "number") {
     alert("First argument must be a typeof Number");
     return;
   }
@@ -116,13 +113,7 @@ $(container).html('');
     $(container).append(block)
   }
 }
-
-$('#myRange').click(function () {
-    numberOfBlocks = parseInt($("#myRange").val());
-    generateBlocksBubble();
-})
-
-//** each page refresh will generate a new random block
+//**
 generateBlocksBubble();
 //**
 function swap(el1, el2) {
@@ -145,7 +136,7 @@ function swap(el1, el2) {
     });
   });
 }
- //===============================>Bubble Sorted Funvtion<===========================//
+
 //bubble function that takes the delay time value in ms;
 async function bubbleSort(delay = 100) {
   if ($("input:checked").val() === 'Bubble Sort') {
@@ -184,7 +175,7 @@ async function bubbleSort(delay = 100) {
   //setting the operation flage to false, ending of sorting .
   sortingOperation = false;
 }
- //==============================>MERGE SORTER FUNCTION<=============================//
+
 async function mergeSort(delay = 100) {
   if ($("input:checked").val() === 'Merge Sort') {
     sortingOperation = true;

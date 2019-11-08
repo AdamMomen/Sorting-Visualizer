@@ -1,5 +1,6 @@
-// THIS IS THE MAIN JS CODE.
+// THIS IS BACKUP 
 //===============================================
+
 // HELPER FUNCTIONS
 function each(coll, f) {
     if (Array.isArray(coll)) {
@@ -42,7 +43,8 @@ function each(coll, f) {
     return acc;
   }
 
-//*****************************************THIS CODE IS AUXILIARY TO SHOW THE SORTING IN SIMPLER FORM.**************************************
+/////////////////////////////////////////////////////////////
+
 var RandGenArr = [];
 var arrayLength = 10;
 var maxRandValue = 5;
@@ -51,52 +53,64 @@ var maxRandValue = 5;
 function getRandomInt() {
   return Math.floor(Math.random() * Math.floor(maxRandValue));
 }
+
+// maybe  need to refactor it later in order to connect to html.
+function getRandomArray() {
+var array = Array(arrayLength);
+return map(array, function (element,i) {
+     return getRandomInt();
+ });
+}
+
+// $('#randArrGenBtn').click(function () {
+
+//  var randomNumDiv = $('#RandomNumbers').html('');
+//    RandGenArr = getRandomArray();
+//  console.log(RandGenArr);  
+
+//  each(RandGenArr, function (element, index) {
+//    $(randomNumDiv).append( element );
+//  });
+// })
  function move (array,from, to) {
       var temp =  array.splice(to, 1, array[from]);
       array.splice(from, 1, temp[0]);
- }
+       }
+
 
 function sortArray(array) {
   for (var i = 0; i < array.length; i++) {  
    for(var j = i; j < array.length ; j++) {
     if (array[i] > array[j] ) {
        move(array, i, j);
-      }
+    }
     }
   }
 return array;
 }
-//====================================== MAIN PROJECT CORE ALGROTHIMS ===============================================================
-var numberOfBlocks = parseInt($("#myRange").val());
-const container = document.querySelector(".data-container");
+
+//====================================== Another refactor of the IDEA =============================================
 var sortingOperation = false;
-
-$('input').click(function () {
-   var text = $("input:checked").val();
-   $('.header').text(text);
-
-})
 
 $('#randArrGenBtn').click(function () {
 if (sortingOperation) {
-  return alert ('SORTING operation is RUNNING PLEASE Wait')
-  }
- 
-});
-
-$('#sort').click(function () {
-  if (sortingOperation) {
-    return alert ('SORTING operation is RUNNING PLEASE Wait')
+  return alert ('BubbleSort is RUNNING')
+       }
+        generateBlocksBubble();
+    });
+  $('#sort').click(function () {
+    if (sortingOperation) {
+      return alert ('BubbleSort is RUNNING')
     }
-  mergeSort();
-  bubbleSort();
+   mergeSort();
 });
 
 
- //============================>RANDOM BLOCK GENERATOR<==========================//
-function generateBlocksBubble(num = numberOfBlocks) {
+const container = document.querySelector(".data-container");
+  
+function generateBlocksBubble(num = 20) {
 $(container).html('');
-  if (typeof num !== "number") {
+  if (num && typeof num !== "number") {
     alert("First argument must be a typeof Number");
     return;
   }
@@ -113,18 +127,14 @@ $(container).html('');
     blockLabel.innerHTML = value;
 
     block.appendChild(blockLabel);
+  //  container.appendChild(block);
     $(container).append(block)
   }
 }
-
-$('#myRange').click(function () {
-    numberOfBlocks = parseInt($("#myRange").val());
-    generateBlocksBubble();
-})
-
-//** each page refresh will generate a new random block
+//generate random block each refresh page.
 generateBlocksBubble();
-//**
+//
+
 function swap(el1, el2) {
   return new Promise(resolve => {
     const style1 = window.getComputedStyle(el1);
@@ -145,12 +155,10 @@ function swap(el1, el2) {
     });
   });
 }
- //===============================>Bubble Sorted Funvtion<===========================//
 //bubble function that takes the delay time value in ms;
 async function bubbleSort(delay = 100) {
-  if ($("input:checked").val() === 'Bubble Sort') {
-    sortingOperation = true;
-    if (delay && typeof delay !== "number" ) {
+  sortingOperation = true;
+  if (delay && typeof delay !== "number") {
     alert("sort: First argument must be a typeof Number");
     return;
   }
@@ -180,22 +188,22 @@ async function bubbleSort(delay = 100) {
     //set the last element color to green. 
     blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
   }
-}
   //setting the operation flage to false, ending of sorting .
   sortingOperation = false;
 }
- //==============================>MERGE SORTER FUNCTION<=============================//
+
+
+
 async function mergeSort(delay = 100) {
-  if ($("input:checked").val() === 'Merge Sort') {
-    sortingOperation = true;
+  sortingOperation = true;
   if (delay && typeof delay !== "number") {
     alert("sort: First argument must be a typeof Number");
     return;
   }
   let blocks = document.querySelectorAll(".block");
   const blocksMiddleIdx = Math.floor((blocks.length - 1) / 2);
-  //THIS PART FOR THE FIRST HALF OF THE BLOCK.
-  for (let i = 0; i < blocksMiddleIdx ; i++) {
+  //
+ for (let i = 0; i < blocksMiddleIdx ; i++) {
     for (let j = 0; j < blocksMiddleIdx - i ; j++) {
     blocks[j].style.backgroundColor = "#FF4949";
     blocks[j + 1].style.backgroundColor = "#FF4949";
@@ -208,7 +216,7 @@ async function mergeSort(delay = 100) {
       const value1 = Number(blocks[j].childNodes[0].innerHTML);
       const value2 = Number(blocks[j + 1].childNodes[0].innerHTML);
 
-      if (value1 > value2) {
+       if (value1 > value2) {
         await swap(blocks[j], blocks[j + 1]);  //calling the swap function and waiting until the transition ends
         blocks = document.querySelectorAll(".block");
       }
@@ -218,14 +226,13 @@ async function mergeSort(delay = 100) {
     }
     //set the last element color to green. 
     blocks[blocksMiddleIdx - i ].style.backgroundColor = "#13CE66";
-}
-    //THIS IS FOR THE NEXT HALF OF THE BLOCKS.
-    for (let i = blocksMiddleIdx + 1; i < blocks.length - 1 ; i++) {
-      for (let j = blocksMiddleIdx + 1; j <blocks.length - i - 1 ; j++) {
-
-      blocks[j].style.backgroundColor = "#FF4949";
-      blocks[j + 1].style.backgroundColor = "#FF4949";
-      await new Promise(resolve =>
+  }
+  //
+ for (let i = blocksMiddleIdx + 1; i < blocks.length - 1 ; i++) {
+    for (let j = blocksMiddleIdx + 1; j <blocks.length - i - 1 ; j++) {
+  blocks[j].style.backgroundColor = "#FF4949";
+    blocks[j + 1].style.backgroundColor = "#FF4949";
+     await new Promise(resolve =>
         setTimeout(() => {
           resolve();
         }, delay)
@@ -244,8 +251,7 @@ async function mergeSort(delay = 100) {
     }
     //set the last element color to green. 
     blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
-    //setting the operation flage to false, ending of sorting .
+  //setting the operation flage to false, ending of sorting .
+  sortingOperation = false;
   }
 }
-  sortingOperation = false;
-} 
