@@ -88,22 +88,22 @@ return array;
 }
 
 ////////////////
-var bubbleRunning = false;
+var sortingOperation = false;
 $('#randArrGenBtn').click(function () {
-if (bubbleRunning) {
+if (sortingOperation) {
   return alert ('BubbleSort is RUNNING')
   }
   generateBlocksBubble();
 });
 $('#sort').click(function () {
-  if (bubbleRunning) {
+  if (sortingOperation) {
   return alert ('BubbleSort is RUNNING')
   }
 	bubbleSort();
  });
 
 
-const container = document.querySelector(".bubbleData-container");
+const container = document.querySelector(".data-container");
   
 function generateBlocksBubble(num = 20) {
 $(container).html('');
@@ -151,7 +151,7 @@ function swap(el1, el2) {
 }
 
 async function bubbleSort(delay = 100) {
-  bubbleRunning = true;
+  sortingOperation = true;
   if (delay && typeof delay !== "number") {
     alert("sort: First argument must be a typeof Number");
     return;
@@ -182,6 +182,7 @@ async function bubbleSort(delay = 100) {
     //set the last element color to green. 
     blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
   }
-  bubbleRunning = false;
+  sortingOperation = false;
 }
+
 generateBlocksBubble();
