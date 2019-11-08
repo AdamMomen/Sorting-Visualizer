@@ -4,7 +4,33 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<title>Sorting Visualizer</title>
 </head>
-<body>
+
+    <form>
+      <fieldset>
+       <legend>Selecting Algorithm</legend>
+       <p>
+          <label>Sorting Algrotihms</label>            
+          <input type = "radio"
+                 name = "radSize"
+                 id = "bubble"
+                 value = "Bubble Sort"
+                 checked = "checked" />
+          <label for = "bubble">Bubble Sort</label>
+          <input type = "radio"
+                 name = "radSize"
+                 id = "mergeSort"
+                 value = "Merge Sort" />
+          <label for = "mergeSort">Merge Sort</label>
+          <input type = "radio"
+                 name = "radSize"
+                 id = "SelectionSort"
+                 value = "Selection Sort" />
+          <label for = "SelectionSort">Selection Sort</label>
+        </p>       
+      </fieldset>     
+    </form>
+
+<body> 
     <section class="header">Bubble Sort</section>
     <section class="bubbleData-container"></section>
 	<button id="randArrGenBtn"> Generate A Random Array</button>

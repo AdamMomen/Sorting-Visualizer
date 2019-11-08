@@ -184,3 +184,4 @@ async function bubbleSort(delay = 100) {
   }
   bubbleRunning = false;
 }
+generateBlocksBubble();
