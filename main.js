@@ -86,17 +86,27 @@ function sortArray(array) {
 	}
 return array;
 }
-$('#sort').click(function () {
-	generateBlocks()
-});
-////////////////
 
+////////////////
+var bubbleRunning = false;
+$('#randArrGenBtn').click(function () {
+if (bubbleRunning) {
+  return alert ('BubbleSort is RUNNING')
+  }
+  generateBlocksBubble();
+});
 $('#sort').click(function () {
+  if (bubbleRunning) {
+  return alert ('BubbleSort is RUNNING')
+  }
 	bubbleSort();
  });
 
 
-function generateBlocks(num = 20) {
+const container = document.querySelector(".bubbleData-container");
+  
+function generateBlocksBubble(num = 20) {
+$(container).html('');
   if (num && typeof num !== "number") {
     alert("First argument must be a typeof Number");
     return;
@@ -114,7 +124,8 @@ function generateBlocks(num = 20) {
     blockLabel.innerHTML = value;
 
     block.appendChild(blockLabel);
-    container.appendChild(block);
+  //  container.appendChild(block);
+    $(container).append(block)
   }
 }
 
@@ -140,13 +151,14 @@ function swap(el1, el2) {
 }
 
 async function bubbleSort(delay = 100) {
+  bubbleRunning = true;
   if (delay && typeof delay !== "number") {
     alert("sort: First argument must be a typeof Number");
     return;
   }
   let blocks = document.querySelectorAll(".block");
-  for (let i = 0; i < blocks.length - 1; i += 1) {
-    for (let j = 0; j < blocks.length - i - 1; j += 1) {
+  for (let i = 0; i < blocks.length - 1; i++) {
+    for (let j = 0; j < blocks.length - i - 1; j++) {
       blocks[j].style.backgroundColor = "#FF4949";
       blocks[j + 1].style.backgroundColor = "#FF4949";
 
@@ -155,7 +167,7 @@ async function bubbleSort(delay = 100) {
           resolve();
         }, delay)
       );
-
+      //takes the values of index and the followig index from blocks div
       const value1 = Number(blocks[j].childNodes[0].innerHTML);
       const value2 = Number(blocks[j + 1].childNodes[0].innerHTML);
 
@@ -167,7 +179,8 @@ async function bubbleSort(delay = 100) {
       blocks[j].style.backgroundColor = "#58B7FF";
       blocks[j + 1].style.backgroundColor = "#58B7FF";
     }
-
+    //set the last element color to green. 
     blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
   }
+  bubbleRunning = false;
 }
