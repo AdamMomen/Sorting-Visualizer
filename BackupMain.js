@@ -223,7 +223,7 @@ async function mergeSort(delay = 100) {
         await swap(blocks[j], blocks[j + 1]);  //calling the swap function and waiting until the transition ends
         blocks = document.querySelectorAll(".block");
       }
-       //set element current index and following to different color style.
+       //set current element's index and following element to BLUE color.
       blocks[j].style.backgroundColor = "#58B7FF";
       blocks[j + 1].style.backgroundColor = "#58B7FF";
     }
