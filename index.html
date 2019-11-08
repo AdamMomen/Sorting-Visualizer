@@ -5,9 +5,9 @@
 	<title>Sorting Visualizer</title>
 </head>
 
-    <form id="formHeader">
-      <fieldset>
-       <legend>Selecting Algorithm</legend>
+    <form >
+      <fieldset id="formHeader">
+       <legend >Selecting Algorithm</legend>
        <p>
           <label>Sorting Algrotihms</label>            
           <input type = "radio"
@@ -29,19 +29,19 @@
         </p>     
         <div class="slideContainerNum">
  		 <input type="range" min="5" max="100" value="20" class="slider" id="Range">
- 		 <label for = "Range">Number Of Random Blocks</label>
+ 		 <label for = "Range">Control Number Of Random Blocks </label>
  		 <h5 id="valOfSlider"></h5>
 		</div>
 		<div class="slidecontainerTime"> 
 		 <input type="range" min="0" max="1000" value="100" class="slider" id="myTime">
- 		 <label for = "myTime">Delay Animation ms</label>
+ 		 <label for = "myTime">Control Delay Animation ms</label>
  		 <h5 id="timeOfSlider"></h5>
  		</div>  
       </fieldset>
     </form>
 
 <body> 
-    <section class="header">Bubble Sort</section>
+    <section class="header"></section>
     <section class="data-container"></section>
 	<button id="randArrGenBtn" > Generate A Random Blocks</button>
 	<button id="sort" class="button"> SORT</button>
@@ -50,4 +50,11 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </body>
+ <footer>
+        <div id="ft">
+            <p>Designed by: Adam Momen</p>
+            <p>Contact information: <a href="https://github.com/AdamMomen">GitHub Repo</a>.</p>
+            <p>© Copy Rights Reserved | ADAM </p>
+        </div>
+    </footer>
 </html>

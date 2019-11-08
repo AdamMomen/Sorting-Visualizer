@@ -1,5 +1,5 @@
 * {
-  font-family: url(https://fonts.google.com/specimen/Comfortaa?selection.family=Comfortaa);
+  font-family: url(https://fonts.google.com/specimen/Comfortaa);
 }
 
 .header {
@@ -118,10 +118,17 @@ h5{
 #formHeader {
   color: red;
 }
-#randArrGenBtn {
+#randArrGenBtn{
   border-radius: 30px;
   outline: none;
 }
-body {
-  background-color: red;
+footer {
+  position: absolute;
+  bottom: 10px ;
+  left:10px;
+  width: 300px;
+  border: 5px solid #b39f7a;
+  border-radius: 25px; 
+  background-color : #E1E8ED;
+  font-family: oswald;
 }
