@@ -67,26 +67,28 @@ function sortArray(array) {
 return array;
 }
 //====================================== MAIN PROJECT CORE ALGROTHIMS ===============================================================
+//Variable block generation
+var mySound = new sound("bounce.mp3");
 var numberOfBlocks = parseInt($("#Range").val());
 var delayTime = parseInt($("#myTime").val());
 const container = document.querySelector(".data-container");
 var sortingOperation = false;
 var exitLoop = false;
 
+//on click on the input checkbox input show the algorithm title on body. 
 $('input').click(function () {
-
    var text = $("input:checked").val();
    $('.header').text(text);
 
 })
-
-$('#randArrGenBtn').click(function () {
+//on click on Random Block Generate , call generateBlocks
+$('#randblkGenBtn').click(function () {
 if (sortingOperation) {
   return alert ('SORTING operation is RUNNING PLEASE Wait')
   }
  generateBlocks();
 });
-
+//on click sort start sorting.
 $('#sort').click(function () {
  if ($("input:checked").val() === undefined){
   return alert('Please select sorting algorithm');
@@ -98,7 +100,7 @@ $('#sort').click(function () {
   bubbleSort();
   selectionSort();
 });
-
+//on click on slider show the number of blocks
 $('#Range').click(function () {
    if (sortingOperation) {
     return alert('Please wait until the sorting is done');
@@ -107,6 +109,7 @@ $('#Range').click(function () {
     generateBlocks();
     $('#valOfSlider').text(numberOfBlocks + ' Blocks');
 })
+//on click on slider show animation delay.
 $('#myTime').click(function () {
    if (sortingOperation) {
     return alert('Please wait until the sorting is done');
@@ -137,7 +140,6 @@ function sound(src) {
     this.sound.pause();
   }
 }
-var mySound = new sound("sound/beep.mp3");
  //============================>RANDOM BLOCK GENERATOR<==========================//
 function generateBlocks(num = numberOfBlocks) {
 $(container).html('');
