@@ -137,7 +137,7 @@ function sound(src) {
     this.sound.pause();
   }
 }
-var mySound = new sound("sound/beep.mp3");
+mySound = new sound("bounce.mp3");
  //============================>RANDOM BLOCK GENERATOR<==========================//
 function generateBlocks(num = numberOfBlocks) {
 $(container).html('');
@@ -221,15 +221,18 @@ async function bubbleSort(delay = delayTime) {
         await swap(blocks[j], blocks[j + 1]);  //calling the swap function and waiting until the transition ends
         blocks = document.querySelectorAll(".block");
       }
+      //
         mySound.play();
+
+      //
       //set element current index and following to different color style.
       blocks[j].style.backgroundColor = "#58B7FF";
       blocks[j + 1].style.backgroundColor = "#58B7FF";
-    
+    }
     //set the last element color to green. 
     blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
-      
-    
+      }
+    }
   //setting the operation flage to false, ending of sorting .
  }
   sortingOperation = false;
@@ -267,15 +270,13 @@ async function mergeSort(delay = delayTime) {
         await swap(blocks[j], blocks[j + 1]);  //calling the swap function and waiting until the transition ends
         blocks = document.querySelectorAll(".block");
       }
-      //play the sound effect.
-      mySound.play();
       //set element current index and following to different color style.
       blocks[j].style.backgroundColor = "#58B7FF";
       blocks[j + 1].style.backgroundColor = "#58B7FF";
-    
+    }
     //set the last element color to green. 
     blocks[blocksMiddleIdx - i ].style.backgroundColor = "#13CE66";
-
+}
     //THIS IS FOR THE NEXT HALF OF THE BLOCKS.
     for (let i = blocksMiddleIdx + 1; i < blocks.length - 1 ; i++) {
       for (let j = blocksMiddleIdx + 1; j <blocks.length - i - 1 ; j++) {
@@ -287,7 +288,6 @@ async function mergeSort(delay = delayTime) {
           resolve();
         }, delay)
       );
-
       //takes the values of index and the followig index from blocks div
       const value1 = Number(blocks[j].childNodes[0].innerHTML);
       const value2 = Number(blocks[j + 1].childNodes[0].innerHTML);
@@ -341,17 +341,14 @@ async function selectionSort(delay = delayTime) {
         await swap(blocks[j], blocks[j + 1]);  //calling the swap function and waiting until the transition ends
         blocks = document.querySelectorAll(".block");
       }
-
-      //play the sound effect
-      mySound.play();
       //set element current index and following to different color style.
       blocks[j].style.backgroundColor = "#58B7FF";
       blocks[j + 1].style.backgroundColor = "#58B7FF";
-    
+    }
     //set the last element color to green. 
     blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
-      
-    
+      }
+    }
   //setting the operation flage to false, ending of sorting .
  }
   sortingOperation = false;
