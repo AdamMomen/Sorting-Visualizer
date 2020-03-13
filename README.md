@@ -5,10 +5,21 @@ This project was implemented using javeScript as a backend along with HTML and C
 
 Sorting Algorithms includes :
 
+- Bubble Sort
+- Merge Sort
+- Selection Sort
+
 ## Live Demo
 
 ![Sorting-Visualizer](./demo/demo.gif)
 
-- Bubble Sort
-- Merge Sort
-- Selection Sort
+# Motivation
+
+- Learning Sorting Algoritms
+- Insights of how computer sorting works
+
+## Furure Work
+
+[] Refactoring the project to VueJS
+[] Adding more sorting alogoritms
+[] Refactoring code base to be more cleaner effecitent
