@@ -1,69 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<link rel="stylesheet" type="text/css" href="style/styles.css">
-	<title>Sorting Visualizer</title>
+    <link rel="stylesheet" type="text/css" href="style/styles.css">
+    <title>Sorting Visualizer</title>
 </head>
 
-    <form >
-      <fieldset id="formHeader">
-       <legend >Selecting Algorithm</legend>
-       <p>
-          <label id="mainlabel">Select Sorting Algrotihm :</label> 
-           <br>
-           <div id='label'>        
-          <input type = "radio"
-                 name = "radSize"
-                 id = "bubble"
-                 value = "Bubble Sort"
-                 class="Sorting" 
-                  />
-          <label for = "bubble">Bubble Sort</label>
-          <input type = "radio"
-                 name = "radSize"
-                 id = "mergeSort"
-                 value = "Merge Sort" 
-                 class="Sorting" />
-          <label for = "mergeSort">Merge Sort</label>
-          <input type = "radio"
-                 name = "radSize"
-                 id = "SelectionSort"
-                 value = "Selection Sort"
-                 class= "Sorting"  />
-          <label for = "SelectionSort">Selection Sort</label>
-          </div>   
-        </p>     
+<form>
+    <fieldset id="formHeader">
+        <legend>Selecting Algorithm</legend>
+        <p>
+            <label id="mainlabel">Select Sorting Algrotihm :</label>
+            <br>
+            <div id='label'>
+                <input type="radio" name="radSize" id="bubble" value="Bubble Sort" class="Sorting" />
+                <label for="bubble">Bubble Sort</label>
+                <input type="radio" name="radSize" id="mergeSort" value="Merge Sort" class="Sorting" />
+                <label for="mergeSort">Merge Sort</label>
+                <input type="radio" name="radSize" id="SelectionSort" value="Selection Sort" class="Sorting" />
+                <label for="SelectionSort">Selection Sort</label>
+            </div>
+        </p>
         <div class="slideContainerNum">
- 		 <input type="range" min="5" max="100" value="20" class="slider" id="Range">
- 		 <label for = "Range">Control Number Of Random Blocks </label>
- 		 <h5 id="valOfSlider"></h5>
-		</div>
-		<div class="slidecontainerTime"> 
-		 <input type="range" min="0" max="1000" value="100" class="slider" id="myTime">
- 		 <label for = "myTime">Control Delay Animation ms</label>
- 		 <h5 id="timeOfSlider"></h5>
- 		</div>  
-      </fieldset>
-    </form>
+            <input type="range" min="5" max="100" value="20" class="slider" id="Range">
+            <label for="Range">Control Number Of Random Blocks </label>
+            <h5 id="valOfSlider"></h5>
+        </div>
+        <div class="slidecontainerTime">
+            <input type="range" min="0" max="1000" value="100" class="slider" id="myTime">
+            <label for="myTime">Control Delay Animation ms</label>
+            <h5 id="timeOfSlider"></h5>
+        </div>
+    </fieldset>
+</form>
 
-<body> 
+<body>
     <section class="header">Sorting Visualizer</section>
     <section class="data-container"></section>
-	<button id="randArrGenBtn" > Generate A Random Blocks</button>
-	<button id="sort" class="button"> SORT</button>
-	<button id="stop" class="button">STOP</button>
-	<div id="RandomNumbers"></div>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="main/main.js"></script>
+    <button id="randArrGenBtn"> Generate A Random Blocks</button>
+    <button id="sort" class="button"> SORT</button>
+    <!-- <button id="stop" class="button">STOP</button> -->
+    <div id="RandomNumbers"></div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="main/main.js"></script>
 </body>
 
- <footer>
-        <div id="ft">
-            <p>Designed by: Adam Momen</p>
-            <p>Contact information: <a href="https://github.com/AdamMomen">GitHub Repo</a>.</p>
-            <p>© Copy Rights Reserved | ADAM </p>
-        </div>
+<footer>
+    <div id="ft">
+        <p>Designed by: Adam Momen</p>
+        <p>Contact information: <a href="https://github.com/AdamMomen">GitHub Repo</a>.</p>
+        <p>© Copy Rights Reserved | ADAM Momen</p>
+    </div>
 
-    </footer>
-    <img src="images/personalImg.jpg" id="perImg">
+</footer>
+<!-- <img src="images/personalImg.jpg" id="perImg"> -->
+
 </html>
