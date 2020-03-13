@@ -20,6 +20,6 @@ Sorting Algorithms includes :
 
 ## Furure Work
 
-[] Refactoring the project to VueJS.<br>
-[] Adding more sorting alogoritms.<br>
-[] Refactoring code base to be more cleaner effecitent.
+[x] Refactoring the project to VueJS.<br>
+[x] Adding more sorting alogoritms.<br>
+[x] Refactoring code base to be more cleaner effecitent.
